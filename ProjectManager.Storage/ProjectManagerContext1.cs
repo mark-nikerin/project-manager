@@ -41,6 +41,7 @@ namespace ProjectManager.Storage
             modelBuilder.ApplyConfiguration(new TaskTypeConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new WorkTimeRecordConfiguration());
+            modelBuilder.ApplyConfiguration(new WorkTimeRecordConfiguration());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
