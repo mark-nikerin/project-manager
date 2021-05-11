@@ -16,6 +16,17 @@ namespace ProjectManager.Storage
         {
         }
 
+        public virtual DbSet<Board> Boards { get; set; }
+        public virtual DbSet<Comment> Comments { get; set; }
+        public virtual DbSet<Iteration> Iterations { get; set; }
+        public virtual DbSet<Project> Projects { get; set; }
+        public virtual DbSet<Task> Tasks { get; set; }
+        public virtual DbSet<TaskStatus> TaskStatuses { get; set; }
+        public virtual DbSet<TaskTag> TaskTags { get; set; }
+        public virtual DbSet<TaskType> TaskTypes { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<WorkTimeRecord> WorkTimeRecords { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new BoardConfiguration());

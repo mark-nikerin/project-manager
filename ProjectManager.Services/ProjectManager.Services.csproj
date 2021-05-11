@@ -4,4 +4,9 @@
         <TargetFramework>net5.0</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\ProjectManager.Services.Interfaces\ProjectManager.Services.Interfaces.csproj" />
+      <ProjectReference Include="..\ProjectManager.Storage\ProjectManager.Storage.csproj" />
+    </ItemGroup>
+
 </Project>
