@@ -18,4 +18,8 @@
       <ProjectReference Include="..\ProjectManager.Storage\ProjectManager.Storage.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Models" />
+    </ItemGroup>
+
 </Project>

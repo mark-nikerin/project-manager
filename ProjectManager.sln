@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManager.Services", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManager.Services.Interfaces", "ProjectManager.Services.Interfaces\ProjectManager.Services.Interfaces.csproj", "{CEC30E41-C7C5-4B13-8B3E-8D5E0D53D388}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManager.Common", "ProjectManager.Common\ProjectManager.Common.csproj", "{F90DE212-DE87-4DB5-9D5E-F368DA1FCD52}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{CEC30E41-C7C5-4B13-8B3E-8D5E0D53D388}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEC30E41-C7C5-4B13-8B3E-8D5E0D53D388}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEC30E41-C7C5-4B13-8B3E-8D5E0D53D388}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F90DE212-DE87-4DB5-9D5E-F368DA1FCD52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F90DE212-DE87-4DB5-9D5E-F368DA1FCD52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F90DE212-DE87-4DB5-9D5E-F368DA1FCD52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F90DE212-DE87-4DB5-9D5E-F368DA1FCD52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

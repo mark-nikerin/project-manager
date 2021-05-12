@@ -5,6 +5,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\ProjectManager.Common\ProjectManager.Common.csproj" />
       <ProjectReference Include="..\ProjectManager.Services.Interfaces\ProjectManager.Services.Interfaces.csproj" />
       <ProjectReference Include="..\ProjectManager.Storage\ProjectManager.Storage.csproj" />
     </ItemGroup>

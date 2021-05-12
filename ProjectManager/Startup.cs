@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using ProjectManager.Filters;
 using ProjectManager.Storage;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
@@ -28,7 +29,7 @@ namespace ProjectManager
             services.AddRouting(options => options.LowercaseUrls = true);
 
             services
-                .AddControllers()
+                .AddControllers(ConfigureMvcOptions)
                 .AddJsonOptions(ConfigureJsonGenOptions);
 
             services
@@ -56,6 +57,11 @@ namespace ProjectManager
         }
 
         #region Configure Options
+
+        private Action<MvcOptions> ConfigureMvcOptions => options =>
+        {
+            options.Filters.Add(typeof(ExceptionFilter));
+        };
 
         private Action<DbContextOptionsBuilder> ConfigureDbContextOptions => options =>
         {

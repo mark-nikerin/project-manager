@@ -2,8 +2,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProjectManager.Services;
-using ProjectManager.Services.Interfaces.DTO.Base;
-using ProjectManager.Services.Interfaces.DTO.Enums;
 
 namespace ProjectManager.Controllers
 {
@@ -22,12 +20,7 @@ namespace ProjectManager.Controllers
         {
             var result = await _projects.GetProjects();
 
-            if (result.Error != null)
-            {
-                CreateErrorResult(result.Error);
-            }
-
-            return Ok(result.Value);
+            return Ok(result);
         }
 
         [HttpPost(Routes.Projects.AddProject)]
@@ -35,16 +28,6 @@ namespace ProjectManager.Controllers
         {
 
             return null;
-        }
-
-        private IActionResult CreateErrorResult(ErrorInfo<ProjectsServiceErrorType> error)
-        {
-            switch (error.ErrorType)
-            {
-
-            }
-
-            return Ok();
         }
     }
 }
