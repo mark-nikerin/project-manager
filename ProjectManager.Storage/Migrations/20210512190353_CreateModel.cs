@@ -7,8 +7,12 @@ namespace ProjectManager.Storage.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.EnsureSchema(
+                name: "dbo");
+
             migrationBuilder.CreateTable(
-                name: "Project",
+                name: "Projects",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -22,11 +26,12 @@ namespace ProjectManager.Storage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Project", x => x.Id);
+                    table.PrimaryKey("PK_Projects", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "User",
+                name: "Users",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -40,11 +45,12 @@ namespace ProjectManager.Storage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_User", x => x.Id);
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Board",
+                name: "Boards",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -55,17 +61,19 @@ namespace ProjectManager.Storage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Board", x => x.Id);
+                    table.PrimaryKey("PK_Boards", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Board_Project_ProjectId",
+                        name: "FK_Boards_Projects_ProjectId",
                         column: x => x.ProjectId,
-                        principalTable: "Project",
+                        principalSchema: "dbo",
+                        principalTable: "Projects",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Iteration",
+                name: "Iterations",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -78,17 +86,19 @@ namespace ProjectManager.Storage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Iteration", x => x.Id);
+                    table.PrimaryKey("PK_Iterations", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Iteration_Project_ProjectId",
+                        name: "FK_Iterations_Projects_ProjectId",
                         column: x => x.ProjectId,
-                        principalTable: "Project",
+                        principalSchema: "dbo",
+                        principalTable: "Projects",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "TaskStatus",
+                name: "TaskStatuses",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -98,17 +108,19 @@ namespace ProjectManager.Storage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TaskStatus", x => x.Id);
+                    table.PrimaryKey("PK_TaskStatuses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TaskStatus_Project_ProjectId",
+                        name: "FK_TaskStatuses_Projects_ProjectId",
                         column: x => x.ProjectId,
-                        principalTable: "Project",
+                        principalSchema: "dbo",
+                        principalTable: "Projects",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "TaskTag",
+                name: "TaskTags",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -118,17 +130,19 @@ namespace ProjectManager.Storage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TaskTag", x => x.Id);
+                    table.PrimaryKey("PK_TaskTags", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TaskTag_Project_ProjectId",
+                        name: "FK_TaskTags_Projects_ProjectId",
                         column: x => x.ProjectId,
-                        principalTable: "Project",
+                        principalSchema: "dbo",
+                        principalTable: "Projects",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "TaskType",
+                name: "TaskTypes",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -139,17 +153,19 @@ namespace ProjectManager.Storage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TaskType", x => x.Id);
+                    table.PrimaryKey("PK_TaskTypes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TaskType_Project_ProjectId",
+                        name: "FK_TaskTypes_Projects_ProjectId",
                         column: x => x.ProjectId,
-                        principalTable: "Project",
+                        principalSchema: "dbo",
+                        principalTable: "Projects",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
                 name: "ProjectUser",
+                schema: "dbo",
                 columns: table => new
                 {
                     ProjectsId = table.Column<int>(type: "int", nullable: false),
@@ -159,21 +175,24 @@ namespace ProjectManager.Storage.Migrations
                 {
                     table.PrimaryKey("PK_ProjectUser", x => new { x.ProjectsId, x.UsersId });
                     table.ForeignKey(
-                        name: "FK_ProjectUser_Project_ProjectsId",
+                        name: "FK_ProjectUser_Projects_ProjectsId",
                         column: x => x.ProjectsId,
-                        principalTable: "Project",
+                        principalSchema: "dbo",
+                        principalTable: "Projects",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProjectUser_User_UsersId",
+                        name: "FK_ProjectUser_Users_UsersId",
                         column: x => x.UsersId,
-                        principalTable: "User",
+                        principalSchema: "dbo",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Task",
+                name: "Tasks",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -194,53 +213,59 @@ namespace ProjectManager.Storage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Task", x => x.Id);
+                    table.PrimaryKey("PK_Tasks", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Task_Board_BoardId",
+                        name: "FK_Tasks_Boards_BoardId",
                         column: x => x.BoardId,
-                        principalTable: "Board",
+                        principalSchema: "dbo",
+                        principalTable: "Boards",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Task_Iteration_IterationId",
+                        name: "FK_Tasks_Iterations_IterationId",
                         column: x => x.IterationId,
-                        principalTable: "Iteration",
+                        principalSchema: "dbo",
+                        principalTable: "Iterations",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Task_Task_ParentTaskId",
+                        name: "FK_Tasks_Tasks_ParentTaskId",
                         column: x => x.ParentTaskId,
-                        principalTable: "Task",
+                        principalSchema: "dbo",
+                        principalTable: "Tasks",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Task_TaskStatus_StatusId",
+                        name: "FK_Tasks_TaskStatuses_StatusId",
                         column: x => x.StatusId,
-                        principalTable: "TaskStatus",
+                        principalSchema: "dbo",
+                        principalTable: "TaskStatuses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Task_TaskType_TypeId",
+                        name: "FK_Tasks_TaskTypes_TypeId",
                         column: x => x.TypeId,
-                        principalTable: "TaskType",
+                        principalSchema: "dbo",
+                        principalTable: "TaskTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Task_User_AssigneeId",
+                        name: "FK_Tasks_Users_AssigneeId",
                         column: x => x.AssigneeId,
-                        principalTable: "User",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        principalSchema: "dbo",
+                        principalTable: "Users",
+                        principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Task_User_ReporterId",
+                        name: "FK_Tasks_Users_ReporterId",
                         column: x => x.ReporterId,
-                        principalTable: "User",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.NoAction);
+                        principalSchema: "dbo",
+                        principalTable: "Users",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "Comment",
+                name: "Comments",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -253,23 +278,26 @@ namespace ProjectManager.Storage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Comment", x => x.Id);
+                    table.PrimaryKey("PK_Comments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Comment_Task_TaskId",
+                        name: "FK_Comments_Tasks_TaskId",
                         column: x => x.TaskId,
-                        principalTable: "Task",
+                        principalSchema: "dbo",
+                        principalTable: "Tasks",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Comment_User_AuthorId",
+                        name: "FK_Comments_Users_AuthorId",
                         column: x => x.AuthorId,
-                        principalTable: "User",
+                        principalSchema: "dbo",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "TaskTaskTag",
+                schema: "dbo",
                 columns: table => new
                 {
                     TagsId = table.Column<int>(type: "int", nullable: false),
@@ -279,21 +307,24 @@ namespace ProjectManager.Storage.Migrations
                 {
                     table.PrimaryKey("PK_TaskTaskTag", x => new { x.TagsId, x.TasksId });
                     table.ForeignKey(
-                        name: "FK_TaskTaskTag_Task_TasksId",
+                        name: "FK_TaskTaskTag_Tasks_TasksId",
                         column: x => x.TasksId,
-                        principalTable: "Task",
+                        principalSchema: "dbo",
+                        principalTable: "Tasks",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_TaskTaskTag_TaskTag_TagsId",
+                        name: "FK_TaskTaskTag_TaskTags_TagsId",
                         column: x => x.TagsId,
-                        principalTable: "TaskTag",
+                        principalSchema: "dbo",
+                        principalTable: "TaskTags",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "WorkTimeRecord",
+                name: "WorkTimeRecords",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -307,149 +338,181 @@ namespace ProjectManager.Storage.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_WorkTimeRecord", x => x.Id);
+                    table.PrimaryKey("PK_WorkTimeRecords", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_WorkTimeRecord_Task_TaskId",
+                        name: "FK_WorkTimeRecords_Tasks_TaskId",
                         column: x => x.TaskId,
-                        principalTable: "Task",
+                        principalSchema: "dbo",
+                        principalTable: "Tasks",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_WorkTimeRecord_User_UserId",
+                        name: "FK_WorkTimeRecords_Users_UserId",
                         column: x => x.UserId,
-                        principalTable: "User",
+                        principalSchema: "dbo",
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Board_ProjectId",
-                table: "Board",
+                name: "IX_Boards_ProjectId",
+                schema: "dbo",
+                table: "Boards",
                 column: "ProjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comment_AuthorId",
-                table: "Comment",
+                name: "IX_Comments_AuthorId",
+                schema: "dbo",
+                table: "Comments",
                 column: "AuthorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comment_TaskId",
-                table: "Comment",
+                name: "IX_Comments_TaskId",
+                schema: "dbo",
+                table: "Comments",
                 column: "TaskId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Iteration_ProjectId",
-                table: "Iteration",
+                name: "IX_Iterations_ProjectId",
+                schema: "dbo",
+                table: "Iterations",
                 column: "ProjectId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProjectUser_UsersId",
+                schema: "dbo",
                 table: "ProjectUser",
                 column: "UsersId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Task_AssigneeId",
-                table: "Task",
+                name: "IX_Tasks_AssigneeId",
+                schema: "dbo",
+                table: "Tasks",
                 column: "AssigneeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Task_BoardId",
-                table: "Task",
+                name: "IX_Tasks_BoardId",
+                schema: "dbo",
+                table: "Tasks",
                 column: "BoardId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Task_IterationId",
-                table: "Task",
+                name: "IX_Tasks_IterationId",
+                schema: "dbo",
+                table: "Tasks",
                 column: "IterationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Task_ParentTaskId",
-                table: "Task",
+                name: "IX_Tasks_ParentTaskId",
+                schema: "dbo",
+                table: "Tasks",
                 column: "ParentTaskId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Task_ReporterId",
-                table: "Task",
+                name: "IX_Tasks_ReporterId",
+                schema: "dbo",
+                table: "Tasks",
                 column: "ReporterId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Task_StatusId",
-                table: "Task",
+                name: "IX_Tasks_StatusId",
+                schema: "dbo",
+                table: "Tasks",
                 column: "StatusId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Task_TypeId",
-                table: "Task",
+                name: "IX_Tasks_TypeId",
+                schema: "dbo",
+                table: "Tasks",
                 column: "TypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TaskStatus_ProjectId",
-                table: "TaskStatus",
+                name: "IX_TaskStatuses_ProjectId",
+                schema: "dbo",
+                table: "TaskStatuses",
                 column: "ProjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TaskTag_ProjectId",
-                table: "TaskTag",
+                name: "IX_TaskTags_ProjectId",
+                schema: "dbo",
+                table: "TaskTags",
                 column: "ProjectId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TaskTaskTag_TasksId",
+                schema: "dbo",
                 table: "TaskTaskTag",
                 column: "TasksId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TaskType_ProjectId",
-                table: "TaskType",
+                name: "IX_TaskTypes_ProjectId",
+                schema: "dbo",
+                table: "TaskTypes",
                 column: "ProjectId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_WorkTimeRecord_TaskId",
-                table: "WorkTimeRecord",
+                name: "IX_WorkTimeRecords_TaskId",
+                schema: "dbo",
+                table: "WorkTimeRecords",
                 column: "TaskId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_WorkTimeRecord_UserId",
-                table: "WorkTimeRecord",
+                name: "IX_WorkTimeRecords_UserId",
+                schema: "dbo",
+                table: "WorkTimeRecords",
                 column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Comment");
+                name: "Comments",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "ProjectUser");
+                name: "ProjectUser",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "TaskTaskTag");
+                name: "TaskTaskTag",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "WorkTimeRecord");
+                name: "WorkTimeRecords",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "TaskTag");
+                name: "TaskTags",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "Task");
+                name: "Tasks",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "Board");
+                name: "Boards",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "Iteration");
+                name: "Iterations",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "TaskStatus");
+                name: "TaskStatuses",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "TaskType");
+                name: "TaskTypes",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Users",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "Project");
+                name: "Projects",
+                schema: "dbo");
         }
     }
 }

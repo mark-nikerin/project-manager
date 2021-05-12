@@ -31,15 +31,17 @@ namespace ProjectManager
             services.AddRouting(options => options.LowercaseUrls = true);
 
             services
-                .AddControllers(ConfigureMvcOptions)
-                .AddJsonOptions(ConfigureJsonGenOptions);
-
-            services
                 .AddDbContext<ProjectManagerContext>(ConfigureDbContextOptions)
                 .AddCors(ConfigureCorsOptions)
                 .AddSwaggerGen(ConfigureSwaggerGenOptions);
 
+            services.AddTransient<BaseService>();
             services.AddTransient<IProjectsService, ProjectsService>();
+
+            services
+                .AddControllers(ConfigureMvcOptions)
+                .AddJsonOptions(ConfigureJsonGenOptions);
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

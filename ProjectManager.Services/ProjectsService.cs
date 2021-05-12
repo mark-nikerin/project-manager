@@ -16,7 +16,7 @@ namespace ProjectManager.Services
 {
     public class ProjectsService : BaseService, IProjectsService
     {
-        protected ProjectsService(ProjectManagerContext context) : base(context)
+        public ProjectsService(ProjectManagerContext context) : base(context)
         {
         }
 

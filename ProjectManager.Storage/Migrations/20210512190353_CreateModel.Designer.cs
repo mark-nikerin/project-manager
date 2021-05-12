@@ -10,13 +10,14 @@ using ProjectManager.Storage;
 namespace ProjectManager.Storage.Migrations
 {
     [DbContext(typeof(ProjectManagerContext))]
-    [Migration("20210511221537_CreateModel")]
+    [Migration("20210512190353_CreateModel")]
     partial class CreateModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("dbo")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.5")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -43,7 +44,7 @@ namespace ProjectManager.Storage.Migrations
 
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("Board");
+                    b.ToTable("Boards");
                 });
 
             modelBuilder.Entity("ProjectManager.Storage.Models.Comment", b =>
@@ -75,7 +76,7 @@ namespace ProjectManager.Storage.Migrations
 
                     b.HasIndex("TaskId");
 
-                    b.ToTable("Comment");
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("ProjectManager.Storage.Models.Iteration", b =>
@@ -106,7 +107,7 @@ namespace ProjectManager.Storage.Migrations
 
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("Iteration");
+                    b.ToTable("Iterations");
                 });
 
             modelBuilder.Entity("ProjectManager.Storage.Models.Project", b =>
@@ -139,7 +140,7 @@ namespace ProjectManager.Storage.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Project");
+                    b.ToTable("Projects");
                 });
 
             modelBuilder.Entity("ProjectManager.Storage.Models.Task", b =>
@@ -206,7 +207,7 @@ namespace ProjectManager.Storage.Migrations
 
                     b.HasIndex("TypeId");
 
-                    b.ToTable("Task");
+                    b.ToTable("Tasks");
                 });
 
             modelBuilder.Entity("ProjectManager.Storage.Models.TaskStatus", b =>
@@ -227,7 +228,7 @@ namespace ProjectManager.Storage.Migrations
 
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("TaskStatus");
+                    b.ToTable("TaskStatuses");
                 });
 
             modelBuilder.Entity("ProjectManager.Storage.Models.TaskTag", b =>
@@ -248,7 +249,7 @@ namespace ProjectManager.Storage.Migrations
 
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("TaskTag");
+                    b.ToTable("TaskTags");
                 });
 
             modelBuilder.Entity("ProjectManager.Storage.Models.TaskType", b =>
@@ -272,7 +273,7 @@ namespace ProjectManager.Storage.Migrations
 
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("TaskType");
+                    b.ToTable("TaskTypes");
                 });
 
             modelBuilder.Entity("ProjectManager.Storage.Models.User", b =>
@@ -305,7 +306,7 @@ namespace ProjectManager.Storage.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("ProjectManager.Storage.Models.WorkTimeRecord", b =>
@@ -340,7 +341,7 @@ namespace ProjectManager.Storage.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("WorkTimeRecord");
+                    b.ToTable("WorkTimeRecords");
                 });
 
             modelBuilder.Entity("ProjectUser", b =>
@@ -419,7 +420,7 @@ namespace ProjectManager.Storage.Migrations
                     b.HasOne("ProjectManager.Storage.Models.User", "Assignee")
                         .WithMany("AssignedTasks")
                         .HasForeignKey("AssigneeId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("ProjectManager.Storage.Models.Board", "Board")
                         .WithMany("Tasks")
@@ -436,7 +437,7 @@ namespace ProjectManager.Storage.Migrations
                     b.HasOne("ProjectManager.Storage.Models.User", "Reporter")
                         .WithMany("ReportedTasks")
                         .HasForeignKey("ReporterId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("ProjectManager.Storage.Models.TaskStatus", "Status")
                         .WithMany("Tasks")

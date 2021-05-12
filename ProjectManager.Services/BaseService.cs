@@ -6,7 +6,7 @@ namespace ProjectManager.Services
     {
         protected readonly ProjectManagerContext _context;
 
-        protected BaseService(ProjectManagerContext context)
+        public BaseService(ProjectManagerContext context)
         {
             _context = context;
         }
