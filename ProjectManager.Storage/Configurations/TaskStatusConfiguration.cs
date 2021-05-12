@@ -22,7 +22,8 @@ namespace ProjectManager.Storage.Configurations
                 .HasOne(t => t.Project)
                 .WithMany(p => p.TaskStatuses)
                 .HasForeignKey(t => t.ProjectId)
-                .IsRequired(false);
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder
                 .HasMany(t => t.Tasks)
