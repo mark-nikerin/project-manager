@@ -10,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using ProjectManager.Filters;
+using ProjectManager.Services;
+using ProjectManager.Services.Interfaces;
 using ProjectManager.Storage;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
@@ -36,6 +38,8 @@ namespace ProjectManager
                 .AddDbContext<ProjectManagerContext>(ConfigureDbContextOptions)
                 .AddCors(ConfigureCorsOptions)
                 .AddSwaggerGen(ConfigureSwaggerGenOptions);
+
+            services.AddTransient<IProjectsService, ProjectsService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

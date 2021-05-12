@@ -14,6 +14,13 @@ namespace ProjectManager.Services.Extensions
 
             return new ProjectDTO
             {
+                Id = project.Id,
+                Title = project.Title,
+                Description = project.Description,
+                Prefix = project.Prefix,
+                CreatedDate = project.CreatedDate,
+                UpdatedDate = project.UpdatedDate,
+                Type = project.Type.ToDTO()
             };
         }
     }
