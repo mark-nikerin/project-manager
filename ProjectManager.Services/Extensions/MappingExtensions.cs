@@ -23,5 +23,21 @@ namespace ProjectManager.Services.Extensions
                 Type = project.Type.ToDTO()
             };
         }
+
+        public static BoardDTO ToDTO(this Board board)
+        {
+            if (board == null)
+            {
+                return null;
+            }
+
+            return new BoardDTO
+            {
+                Id = board.Id,
+                Title = board.Title,
+                Description = board.Description,
+                ProjectId = board.ProjectId
+            };
+        }
     }
 }

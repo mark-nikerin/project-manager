@@ -19,6 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Models\Boards\Responses" />
       <Folder Include="Models\Projects\Responses" />
     </ItemGroup>
 

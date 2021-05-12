@@ -2,7 +2,7 @@
 
 namespace ProjectManager.Models.Projects.Requests
 {
-    public class UpdateProjectRequest
+    public class UpdateProjectRequest : IdRequest
     {
         public string Title { get; set; }
 
