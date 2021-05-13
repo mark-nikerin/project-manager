@@ -21,6 +21,7 @@
     <ItemGroup>
       <Folder Include="Models\Boards\Responses" />
       <Folder Include="Models\Projects\Responses" />
+      <Folder Include="Models\Tasks\Board" />
     </ItemGroup>
 
 </Project>

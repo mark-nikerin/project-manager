@@ -6,6 +6,8 @@ namespace ProjectManager.Models
     {
         public const string Id = "id";
         public const string ProjectId = "projectId";
+        public const string BoardId = "boardId";
+        public const string IterationId = "iterationId";
     }
 
     public class IdRequest

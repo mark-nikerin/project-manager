@@ -1,4 +1,4 @@
-﻿namespace ProjectManager.Services.Interfaces.DTO.Projects
+﻿namespace ProjectManager.Services.Interfaces.DTO.Boards
 {
     public class BoardDTO
     {
@@ -7,7 +7,5 @@
         public string Title { get; set; }
 
         public string Description { get; set; }
-
-        public int ProjectId { get; set; }
     }
 }

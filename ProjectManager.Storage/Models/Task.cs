@@ -28,7 +28,6 @@ namespace ProjectManager.Storage.Models
 
         public DateTimeOffset DueToDate { get; set; }
 
-
         public int? AssigneeId { get; set; }
 
         public int? ReporterId { get; set; }

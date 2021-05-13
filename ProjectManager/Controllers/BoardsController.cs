@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProjectManager.Models.Boards.Requests;
 using ProjectManager.Services.Interfaces;
+using ProjectManager.Services.Interfaces.DTO.Boards;
 using ProjectManager.Services.Interfaces.DTO.Projects;
 
 namespace ProjectManager.Controllers
@@ -36,11 +37,10 @@ namespace ProjectManager.Controllers
             var dto = new BoardDTO
             {
                 Title = request.Title,
-                Description = request.Description,
-                ProjectId = request.ProjectId
+                Description = request.Description
             };
 
-            var result = await _boardsService.AddBoard(dto);
+            var result = await _boardsService.AddBoard(request.ProjectId, dto);
             return Ok(result);
         }
 
@@ -51,11 +51,10 @@ namespace ProjectManager.Controllers
             {
                 Id = request.Id,
                 Title = request.Title,
-                Description = request.Description,
-                ProjectId = request.ProjectId
+                Description = request.Description
             };
 
-            var result = await _boardsService.UpdateBoard(dto);
+            var result = await _boardsService.UpdateBoard(request.ProjectId, dto);
 
             return Ok(result);
         }

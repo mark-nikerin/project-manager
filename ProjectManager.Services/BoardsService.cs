@@ -6,6 +6,7 @@ using ProjectManager.Common.ErrorResponses;
 using ProjectManager.Common.Exceptions;
 using ProjectManager.Services.Extensions;
 using ProjectManager.Services.Interfaces;
+using ProjectManager.Services.Interfaces.DTO.Boards;
 using ProjectManager.Services.Interfaces.DTO.Projects;
 using ProjectManager.Storage;
 using ProjectManager.Storage.Models;
@@ -46,9 +47,9 @@ namespace ProjectManager.Services
             return board;
         }
 
-        public async Task<BoardDTO> AddBoard(BoardDTO model)
+        public async Task<BoardDTO> AddBoard(int projectId, BoardDTO model)
         {
-            if (await IsAlreadyExistsAsync(model.Title, model.ProjectId))
+            if (await IsAlreadyExistsAsync(model.Title, projectId))
                 throw new BadRequestException(ErrorResponseCodes.InvalidOperation,
                     $"Board with title '{model.Title}' already exists in this project");
 
@@ -56,7 +57,7 @@ namespace ProjectManager.Services
             {
                 Title = model.Title,
                 Description = model.Description,
-                ProjectId = model.ProjectId
+                ProjectId = projectId
             };
 
             await _context.Boards.AddAsync(board);
@@ -72,10 +73,10 @@ namespace ProjectManager.Services
             return addedBoard;
         }
 
-        public async Task<BoardDTO> UpdateBoard(BoardDTO model)
+        public async Task<BoardDTO> UpdateBoard(int projectId, BoardDTO model)
         {
             var board = await _context.Boards
-                .Where(x => x.ProjectId == model.ProjectId)
+                .Where(x => x.ProjectId == projectId)
                 .Where(x => x.Id == model.Id)
                 .FirstOrDefaultAsync();
 
@@ -83,7 +84,7 @@ namespace ProjectManager.Services
                 throw new NotFoundException(ErrorResponseCodes.InvalidOperation,
                     $"Board with id={model.Id} not found");
 
-            if (await IsAlreadyExistsAsync(model.Title, model.ProjectId, model.Id))
+            if (await IsAlreadyExistsAsync(model.Title, projectId, model.Id))
                 throw new BadRequestException(ErrorResponseCodes.InvalidOperation,
                     $"Board with title '{model.Title}' already exists in this project");
 

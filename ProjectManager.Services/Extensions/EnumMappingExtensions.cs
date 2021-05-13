@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq.Expressions;
 using ProjectManager.Services.Interfaces.DTO.Enums;
 using ProjectManager.Storage.Enums;
 
@@ -22,6 +23,32 @@ namespace ProjectManager.Services.Extensions
             {
                 ProjectTypeEnum.Common => ProjectType.Common,
                 ProjectTypeEnum.Iterative => ProjectType.Iterative,
+                _ => throw new Exception($"Unknown project type: {value}")
+            };
+        }
+
+        public static TaskPriorityEnum ToDTO(this TaskPriority value)
+        {
+            return value switch
+            {
+                TaskPriority.Minor => TaskPriorityEnum.Minor,
+                TaskPriority.Normal => TaskPriorityEnum.Normal,
+                TaskPriority.Major => TaskPriorityEnum.Major,
+                TaskPriority.Critical => TaskPriorityEnum.Critical,
+                TaskPriority.Blocker => TaskPriorityEnum.Blocker,
+                _ => throw new Exception($"Unknown project type: {value}")
+            };
+        }
+
+        public static TaskPriority ToEntity(this TaskPriorityEnum value)
+        {
+            return value switch
+            {
+                TaskPriorityEnum.Minor => TaskPriority.Minor,
+                TaskPriorityEnum.Normal => TaskPriority.Normal,
+                TaskPriorityEnum.Major => TaskPriority.Major,
+                TaskPriorityEnum.Critical => TaskPriority.Critical,
+                TaskPriorityEnum.Blocker => TaskPriority.Blocker,
                 _ => throw new Exception($"Unknown project type: {value}")
             };
         }

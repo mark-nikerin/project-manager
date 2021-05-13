@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using ProjectManager.Services.Interfaces.DTO.Boards;
 using ProjectManager.Services.Interfaces.DTO.Projects;
 
 namespace ProjectManager.Services.Interfaces
@@ -8,8 +9,8 @@ namespace ProjectManager.Services.Interfaces
     {
         Task<IReadOnlyCollection<BoardDTO>> GetBoards(int projectId);
         Task<BoardDTO> GetBoard(int projectId, int boardId);
-        Task<BoardDTO> AddBoard(BoardDTO model);
-        Task<BoardDTO> UpdateBoard(BoardDTO model);
+        Task<BoardDTO> AddBoard(int projectId, BoardDTO model);
+        Task<BoardDTO> UpdateBoard(int projectId, BoardDTO model);
         Task DeleteBoard(int projectId, int boardId);
     }
 }

@@ -37,6 +37,8 @@ namespace ProjectManager
 
             services.AddTransient<BaseService>();
             services.AddTransient<IProjectsService, ProjectsService>();
+            services.AddTransient<IBoardsService, BoardsService>();
+            services.AddTransient<ITasksService, TasksService>();
 
             services
                 .AddControllers(ConfigureMvcOptions)
