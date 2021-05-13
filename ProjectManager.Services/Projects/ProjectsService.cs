@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore;
 using ProjectManager.Common.ErrorResponses;
 using ProjectManager.Common.Exceptions;
 using ProjectManager.Services.Extensions;
-using ProjectManager.Services.Interfaces;
 using ProjectManager.Services.Interfaces.DTO.Projects;
+using ProjectManager.Services.Interfaces.Projects;
 using ProjectManager.Storage;
 using ProjectManager.Storage.Models;
 using Task = System.Threading.Tasks.Task;
 
-namespace ProjectManager.Services
+namespace ProjectManager.Services.Projects
 {
     public class ProjectsService : BaseService, IProjectsService
     {

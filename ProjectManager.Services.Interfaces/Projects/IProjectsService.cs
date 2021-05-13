@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using ProjectManager.Services.Interfaces.DTO.Projects;
 
-namespace ProjectManager.Services.Interfaces
+namespace ProjectManager.Services.Interfaces.Projects
 {
     public interface IProjectsService
     {

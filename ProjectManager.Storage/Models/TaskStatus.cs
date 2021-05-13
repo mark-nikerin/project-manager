@@ -13,7 +13,7 @@ namespace ProjectManager.Storage.Models
 
         public string Title { get; set; }
 
-        public int ProjectId { get; set; }
+        public int? ProjectId { get; set; }
 
         public virtual Project Project { get; set; }
 

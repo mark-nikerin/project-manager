@@ -3,8 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using ProjectManager.Models.Tasks.Requests;
 using ProjectManager.Services.Interfaces;
 using ProjectManager.Services.Interfaces.DTO.Tasks;
+using ProjectManager.Services.Interfaces.Tasks;
 
-namespace ProjectManager.Controllers
+namespace ProjectManager.Controllers.Tasks
 {
     [ApiController]
     public class TasksController : ControllerBase

@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using ProjectManager.Services.Interfaces.DTO.Projects;
 using ProjectManager.Services.Interfaces.DTO.Tasks;
 
-namespace ProjectManager.Services.Interfaces
+namespace ProjectManager.Services.Interfaces.Tasks
 {
     public interface ITasksService
     {

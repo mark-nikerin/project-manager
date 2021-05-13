@@ -5,14 +5,13 @@ using Microsoft.EntityFrameworkCore;
 using ProjectManager.Common.ErrorResponses;
 using ProjectManager.Common.Exceptions;
 using ProjectManager.Services.Extensions;
-using ProjectManager.Services.Interfaces;
+using ProjectManager.Services.Interfaces.Boards;
 using ProjectManager.Services.Interfaces.DTO.Boards;
-using ProjectManager.Services.Interfaces.DTO.Projects;
 using ProjectManager.Storage;
 using ProjectManager.Storage.Models;
 using Task = System.Threading.Tasks.Task;
 
-namespace ProjectManager.Services
+namespace ProjectManager.Services.Boards
 {
     public class BoardsService : BaseService, IBoardsService
     {

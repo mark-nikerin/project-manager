@@ -11,7 +11,13 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using ProjectManager.Filters;
 using ProjectManager.Services;
+using ProjectManager.Services.Boards;
 using ProjectManager.Services.Interfaces;
+using ProjectManager.Services.Interfaces.Boards;
+using ProjectManager.Services.Interfaces.Projects;
+using ProjectManager.Services.Interfaces.Tasks;
+using ProjectManager.Services.Projects;
+using ProjectManager.Services.Tasks;
 using ProjectManager.Storage;
 using Swashbuckle.AspNetCore.SwaggerGen;
 

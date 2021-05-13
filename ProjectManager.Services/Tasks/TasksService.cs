@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore;
 using ProjectManager.Common.ErrorResponses;
 using ProjectManager.Common.Exceptions;
 using ProjectManager.Services.Extensions;
-using ProjectManager.Services.Interfaces;
 using ProjectManager.Services.Interfaces.DTO.Tasks;
+using ProjectManager.Services.Interfaces.Tasks;
 using ProjectManager.Storage;
 
-namespace ProjectManager.Services
+namespace ProjectManager.Services.Tasks
 {
     public class TasksService : BaseService, ITasksService
     {
@@ -24,6 +24,8 @@ namespace ProjectManager.Services
         {
             var tasks = await _context.Tasks
                 .AsNoTracking()
+                .Include(x => x.Status)
+                .Include(x => x.Type)
                 .Where(x => x.BoardId == boardId)
                 .Select(x => x.ToDTO())
                 .ToListAsync();
@@ -35,6 +37,10 @@ namespace ProjectManager.Services
         {
             var task = await _context.Tasks
                 .AsNoTracking()
+                .Include(x => x.Status)
+                .Include(x => x.Type)
+                .Include(x => x.Assignee)
+                .Include(x => x.Reporter)
                 .Where(x => x.BoardId == boardId)
                 .Where(x => x.Id == taskId)
                 .Select(x => x.ToDetailsDTO())
@@ -71,6 +77,8 @@ namespace ProjectManager.Services
 
             var addedTask = await _context.Tasks
                 .AsNoTracking()
+                .Include(x => x.Status)
+                .Include(x => x.Type)
                 .Where(x => x.BoardId == task.BoardId)
                 .Where(x => x.Title == task.Title)
                 .Where(x => x.CreatedDate == task.CreatedDate)
@@ -85,6 +93,8 @@ namespace ProjectManager.Services
             var task = await _context.Tasks
                 .Where(x => x.BoardId == boardId)
                 .Where(x => x.Id == model.Id)
+                .Include(x => x.Status)
+                .Include(x => x.Type)
                 .FirstOrDefaultAsync();
 
             if (task == null)

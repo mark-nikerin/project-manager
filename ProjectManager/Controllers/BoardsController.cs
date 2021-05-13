@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProjectManager.Models.Boards.Requests;
 using ProjectManager.Services.Interfaces;
+using ProjectManager.Services.Interfaces.Boards;
 using ProjectManager.Services.Interfaces.DTO.Boards;
 using ProjectManager.Services.Interfaces.DTO.Projects;
 

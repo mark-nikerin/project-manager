@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using ProjectManager.Services.Interfaces.DTO.Boards;
-using ProjectManager.Services.Interfaces.DTO.Projects;
 
-namespace ProjectManager.Services.Interfaces
+namespace ProjectManager.Services.Interfaces.Boards
 {
     public interface IBoardsService
     {
