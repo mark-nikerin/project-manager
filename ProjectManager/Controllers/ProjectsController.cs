@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using ProjectManager.Models;
 using ProjectManager.Models.Projects.Requests;
 using ProjectManager.Services.Interfaces;
 using ProjectManager.Services.Interfaces.DTO.Projects;
@@ -26,9 +25,9 @@ namespace ProjectManager.Controllers
         }
 
         [HttpGet(Routes.Projects.GetProject)]
-        public async Task<IActionResult> GetProject(IdRequest request)
+        public async Task<IActionResult> GetProject(int id)
         {
-            var result = await _projects.GetProject(request.Id);
+            var result = await _projects.GetProject(id);
 
             return Ok(result);
         }
@@ -50,11 +49,11 @@ namespace ProjectManager.Controllers
         }
 
         [HttpPut(Routes.Projects.UpdateProject)]
-        public async Task<IActionResult> UpdateProject(UpdateProjectRequest request)
+        public async Task<IActionResult> UpdateProject(int id, UpdateProjectRequest request)
         {
             var dto = new ProjectDTO
             {
-                Id = request.Id,
+                Id = id,
                 Title = request.Title,
                 Description = request.Description,
                 Prefix = request.Prefix,
@@ -67,9 +66,9 @@ namespace ProjectManager.Controllers
         }
 
         [HttpDelete(Routes.Projects.DeleteProject)]
-        public async Task<IActionResult> UpdateProject(IdRequest request)
+        public async Task<IActionResult> UpdateProject(int id)
         {
-            await _projects.DeleteProject(request.Id);
+            await _projects.DeleteProject(id);
 
             return Ok();
         }

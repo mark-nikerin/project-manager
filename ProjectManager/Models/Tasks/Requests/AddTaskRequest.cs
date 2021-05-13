@@ -1,9 +1,9 @@
 ﻿using System;
 using ProjectManager.Services.Interfaces.DTO.Enums;
 
-namespace ProjectManager.Models.Tasks
+namespace ProjectManager.Models.Tasks.Requests
 {
-    public class BaseAddTaskRequest
+    public class AddTaskRequest
     {
         public string Title { get; set; }
 

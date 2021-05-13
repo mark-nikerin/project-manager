@@ -25,14 +25,14 @@ namespace ProjectManager.Controllers
         }
 
         [HttpGet(Routes.Boards.GetBoard)]
-        public async Task<IActionResult> GetBoard(BoardIdRequest request)
+        public async Task<IActionResult> GetBoard(int projectId, int id)
         {
-            var result = await _boardsService.GetBoard(request.ProjectId, request.Id);
+            var result = await _boardsService.GetBoard(projectId, id);
             return Ok(result);
         }
 
-        [HttpPut(Routes.Boards.AddBoard)]
-        public async Task<IActionResult> AddBoard(AddBoardRequest request)
+        [HttpPost(Routes.Boards.AddBoard)]
+        public async Task<IActionResult> AddBoard(int projectId, AddBoardRequest request)
         {
             var dto = new BoardDTO
             {
@@ -40,29 +40,29 @@ namespace ProjectManager.Controllers
                 Description = request.Description
             };
 
-            var result = await _boardsService.AddBoard(request.ProjectId, dto);
+            var result = await _boardsService.AddBoard(projectId, dto);
             return Ok(result);
         }
 
         [HttpPut(Routes.Boards.UpdateBoard)]
-        public async Task<IActionResult> UpdateBoard(UpdateBoardRequest request)
+        public async Task<IActionResult> UpdateBoard(int projectId, int id, UpdateBoardRequest request)
         {
             var dto = new BoardDTO
             {
-                Id = request.Id,
+                Id = id,
                 Title = request.Title,
                 Description = request.Description
             };
 
-            var result = await _boardsService.UpdateBoard(request.ProjectId, dto);
+            var result = await _boardsService.UpdateBoard(projectId, dto);
 
             return Ok(result);
         }
 
         [HttpDelete(Routes.Boards.DeleteBoard)]
-        public async Task<IActionResult> DeleteBoard(BoardIdRequest request)
+        public async Task<IActionResult> DeleteBoard(int projectId, int id)
         {
-            await _boardsService.DeleteBoard(request.ProjectId, request.Id);
+            await _boardsService.DeleteBoard(projectId, id);
 
             return Ok();
         }

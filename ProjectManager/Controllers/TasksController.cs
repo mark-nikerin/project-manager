@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using ProjectManager.Models.Tasks.Board.Requests;
-using ProjectManager.Models.Tasks.Iteration.Requests;
+using ProjectManager.Models.Tasks.Requests;
 using ProjectManager.Services.Interfaces;
 using ProjectManager.Services.Interfaces.DTO.Tasks;
 
@@ -27,14 +26,14 @@ namespace ProjectManager.Controllers
         }
 
         [HttpGet(Routes.Tasks.BoardTasks.GetTask)]
-        public async Task<IActionResult> GetTask(BoardTaskIdRequest request)
+        public async Task<IActionResult> GetBoardTask(int boardId, int id)
         {
-            var result = await _tasksService.GetBoardTask(request.BoardId, request.Id);
+            var result = await _tasksService.GetBoardTask(boardId, id);
             return Ok(result);
         }
 
-        [HttpPut(Routes.Tasks.BoardTasks.AddTask)]
-        public async Task<IActionResult> AddTask(AddBoardTaskRequest request)
+        [HttpPost(Routes.Tasks.BoardTasks.AddTask)]
+        public async Task<IActionResult> AddBoardTask(int boardId, AddTaskRequest request)
         {
             var dto = new TaskDetailsDTO
             {
@@ -54,16 +53,16 @@ namespace ProjectManager.Controllers
                 }
             };
 
-            var result = await _tasksService.AddBoardTask(request.BoardId, dto);
+            var result = await _tasksService.AddBoardTask(boardId, dto);
             return Ok(result);
         }
 
         [HttpPut(Routes.Tasks.BoardTasks.UpdateTask)]
-        public async Task<IActionResult> UpdateTask(UpdateBoardTaskRequest request)
+        public async Task<IActionResult> UpdateBoardTask( int boardId, int id, UpdateTaskRequest request)
         {
             var dto = new TaskDetailsDTO
             {
-                Id = request.Id,
+                Id = id,
                 Title = request.Title,
                 Description = request.Description,
                 DueToDate = request.DueToDate,
@@ -80,14 +79,14 @@ namespace ProjectManager.Controllers
                 }
             };
 
-            var result = await _tasksService.UpdateBoardTask(request.BoardId, dto);
+            var result = await _tasksService.UpdateBoardTask(boardId, dto);
             return Ok(result);
         }
 
         [HttpDelete(Routes.Tasks.BoardTasks.DeleteTask)]
-        public async Task<IActionResult> DeleteTask(BoardTaskIdRequest request)
+        public async Task<IActionResult> DeleteBoardTask(int boardId, int id)
         {
-            await _tasksService.DeleteBoardTask(request.BoardId, request.Id);
+            await _tasksService.DeleteBoardTask(boardId, id);
 
             return Ok();
         }
@@ -104,14 +103,14 @@ namespace ProjectManager.Controllers
         }
 
         [HttpGet(Routes.Tasks.IterationTasks.GetTask)]
-        public async Task<IActionResult> GetTask(IterationTaskIdRequest request)
+        public async Task<IActionResult> GetTask(int iterationId, int id)
         {
-            var result = await _tasksService.GetIterationTask(request.IterationId, request.Id);
+            var result = await _tasksService.GetIterationTask(iterationId, id);
             return Ok(result);
         }
 
-        [HttpPut(Routes.Tasks.IterationTasks.AddTask)]
-        public async Task<IActionResult> AddTask(AddIterationTaskRequest request)
+        [HttpPost(Routes.Tasks.IterationTasks.AddTask)]
+        public async Task<IActionResult> AddIterationTask(int iterationId, AddTaskRequest request)
         {
             var dto = new TaskDetailsDTO
             {
@@ -131,16 +130,16 @@ namespace ProjectManager.Controllers
                 }
             };
 
-            var result = await _tasksService.AddIterationTask(request.IterationId, dto);
+            var result = await _tasksService.AddIterationTask(iterationId, dto);
             return Ok(result);
         }
 
         [HttpPut(Routes.Tasks.IterationTasks.UpdateTask)]
-        public async Task<IActionResult> UpdateTask(UpdateIterationTaskRequest request)
+        public async Task<IActionResult> UpdateIterationTask(int iterationId, int id, UpdateTaskRequest request)
         {
             var dto = new TaskDetailsDTO
             {
-                Id = request.Id,
+                Id = id,
                 Title = request.Title,
                 Description = request.Description,
                 DueToDate = request.DueToDate,
@@ -157,14 +156,14 @@ namespace ProjectManager.Controllers
                 }
             };
 
-            var result = await _tasksService.UpdateIterationTask(request.IterationId, dto);
+            var result = await _tasksService.UpdateIterationTask(iterationId, dto);
             return Ok(result);
         }
 
         [HttpDelete(Routes.Tasks.IterationTasks.DeleteTask)]
-        public async Task<IActionResult> DeleteTask(IterationTaskIdRequest request)
+        public async Task<IActionResult> DeleteIterationTask(int iterationId, int id)
         {
-            await _tasksService.DeleteIterationTask(request.IterationId, request.Id);
+            await _tasksService.DeleteIterationTask(iterationId, id);
 
             return Ok();
         }
