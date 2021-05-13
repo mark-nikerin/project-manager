@@ -52,5 +52,27 @@ namespace ProjectManager.Services.Extensions
                 _ => throw new Exception($"Unknown project type: {value}")
             };
         }
+
+        public static UserRoleEnum ToDTO(this UserRole value)
+        {
+            return value switch
+            {
+                UserRole.Admin => UserRoleEnum.Admin,
+                UserRole.SuperAdmin => UserRoleEnum.SuperAdmin,
+                UserRole.User => UserRoleEnum.User,
+                _ => throw new Exception($"Unknown user role: {value}")
+            };
+        }
+
+        public static UserRole ToEntity(this UserRoleEnum value)
+        {
+            return value switch
+            {
+                UserRoleEnum.Admin => UserRole.Admin,
+                UserRoleEnum.SuperAdmin => UserRole.SuperAdmin,
+                UserRoleEnum.User => UserRole.User,
+                _ => throw new Exception($"Unknown user role: {value}")
+            };
+        }
     }
 }

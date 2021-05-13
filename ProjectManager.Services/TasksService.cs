@@ -58,8 +58,8 @@ namespace ProjectManager.Services
                 CreatedDate = currentDateTime,
                 Priority = model.Priority.ToEntity(),
                 DueToDate = model.DueToDate,
-                TypeId = model.TypeId,
-                StatusId = model.StatusId,
+                TypeId = model.Type.Id,
+                StatusId = model.Status.Id,
                 BoardId = boardId,
                 ParentTaskId = model.ParentTaskId,
                 AssigneeId = model.AssigneeId,
@@ -96,8 +96,8 @@ namespace ProjectManager.Services
             task.UpdatedDate = DateTimeOffset.UtcNow;
             task.Priority = model.Priority.ToEntity();
             task.DueToDate = model.DueToDate;
-            task.TypeId = model.TypeId;
-            task.StatusId = model.StatusId;
+            task.TypeId = model.Type.Id;
+            task.StatusId = model.Status.Id;
             task.ParentTaskId = model.ParentTaskId;
             task.AssigneeId = model.AssigneeId;
             task.ReporterId = model.ReporterId;
@@ -161,8 +161,8 @@ namespace ProjectManager.Services
                 CreatedDate = currentDateTime,
                 Priority = model.Priority.ToEntity(),
                 DueToDate = model.DueToDate,
-                TypeId = model.TypeId,
-                StatusId = model.StatusId,
+                TypeId = model.Type.Id,
+                StatusId = model.Status.Id,
                 BoardId = iterationId,
                 ParentTaskId = model.ParentTaskId,
                 AssigneeId = model.AssigneeId,
@@ -199,8 +199,8 @@ namespace ProjectManager.Services
             task.UpdatedDate = DateTimeOffset.UtcNow;
             task.Priority = model.Priority.ToEntity();
             task.DueToDate = model.DueToDate;
-            task.TypeId = model.TypeId;
-            task.StatusId = model.StatusId;
+            task.TypeId = model.Type.Id;
+            task.StatusId = model.Status.Id;
             task.ParentTaskId = model.ParentTaskId;
             task.AssigneeId = model.AssigneeId;
             task.ReporterId = model.ReporterId;

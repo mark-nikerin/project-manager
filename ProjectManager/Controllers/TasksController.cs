@@ -44,8 +44,14 @@ namespace ProjectManager.Controllers
                 Priority = request.Priority,
                 AssigneeId = request.AssigneeId,
                 ReporterId = request.ReporterId,
-                TypeId = request.TypeId,
-                StatusId = request.StatusId.GetValueOrDefault()
+                Type = new TaskTypeDTO
+                {
+                    Id = request.TypeId
+                },
+                Status = new TaskStatusDTO
+                {
+                    Id = request.StatusId.GetValueOrDefault()
+                }
             };
 
             var result = await _tasksService.AddBoardTask(request.BoardId, dto);
@@ -64,8 +70,14 @@ namespace ProjectManager.Controllers
                 Priority = request.Priority,
                 AssigneeId = request.AssigneeId,
                 ReporterId = request.ReporterId,
-                TypeId = request.TypeId,
-                StatusId = request.StatusId.GetValueOrDefault()
+                Type = new TaskTypeDTO
+                {
+                    Id = request.TypeId
+                },
+                Status = new TaskStatusDTO
+                {
+                    Id = request.StatusId.GetValueOrDefault()
+                }
             };
 
             var result = await _tasksService.UpdateBoardTask(request.BoardId, dto);
@@ -109,8 +121,14 @@ namespace ProjectManager.Controllers
                 Priority = request.Priority,
                 AssigneeId = request.AssigneeId,
                 ReporterId = request.ReporterId,
-                TypeId = request.TypeId,
-                StatusId = request.StatusId.GetValueOrDefault()
+                Type = new TaskTypeDTO
+                {
+                    Id = request.TypeId
+                },
+                Status = new TaskStatusDTO
+                {
+                    Id = request.StatusId.GetValueOrDefault()
+                }
             };
 
             var result = await _tasksService.AddIterationTask(request.IterationId, dto);
@@ -129,8 +147,14 @@ namespace ProjectManager.Controllers
                 Priority = request.Priority,
                 AssigneeId = request.AssigneeId,
                 ReporterId = request.ReporterId,
-                TypeId = request.TypeId,
-                StatusId = request.StatusId.GetValueOrDefault()
+                Type = new TaskTypeDTO
+                {
+                    Id = request.TypeId
+                },
+                Status = new TaskStatusDTO
+                {
+                    Id = request.StatusId.GetValueOrDefault()
+                }
             };
 
             var result = await _tasksService.UpdateIterationTask(request.IterationId, dto);

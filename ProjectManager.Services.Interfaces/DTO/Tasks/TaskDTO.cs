@@ -12,8 +12,8 @@ namespace ProjectManager.Services.Interfaces.DTO.Tasks
 
         public int? AssigneeId { get; set; }
 
-        public int TypeId { get; set; }
+        public TaskTypeDTO Type { get; set; }
 
-        public int StatusId { get; set; }
+        public TaskStatusDTO Status { get; set; }
     }
 }

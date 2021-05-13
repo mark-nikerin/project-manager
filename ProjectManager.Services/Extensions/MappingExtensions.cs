@@ -53,9 +53,9 @@ namespace ProjectManager.Services.Extensions
                 Id = task.Id,
                 Title = task.Title,
                 AssigneeId = task.AssigneeId,
-                StatusId = task.StatusId,
+                Status = task.Status.ToDTO(),
                 Priority = task.Priority.ToDTO(),
-                TypeId = task.TypeId
+                Type = task.Type.ToDTO()
             };
         }
 
@@ -72,14 +72,43 @@ namespace ProjectManager.Services.Extensions
                 Title = task.Title,
                 Description = task.Description,
                 AssigneeId = task.AssigneeId,
-                StatusId = task.StatusId,
+                Status = task.Status.ToDTO(),
                 Priority = task.Priority.ToDTO(),
-                TypeId = task.TypeId,
+                Type = task.Type.ToDTO(),
                 CreatedDate = task.CreatedDate,
                 UpdatedDate = task.UpdatedDate,
                 DueToDate = task.DueToDate,
                 ReporterId = task.ReporterId.GetValueOrDefault(),
-                ParentTaskId= task.ParentTaskId,
+                ParentTaskId = task.ParentTaskId
+            };
+        }
+
+        public static TaskTypeDTO ToDTO(this TaskType type)
+        {
+            if (type == null)
+            {
+                return null;
+            }
+
+            return new TaskTypeDTO
+            {
+                Id = type.Id,
+                Title = type.Title,
+                Description = type.Description
+            };
+        }
+
+        public static TaskStatusDTO ToDTO(this TaskStatus type)
+        {
+            if (type == null)
+            {
+                return null;
+            }
+
+            return new TaskStatusDTO
+            {
+                Id = type.Id,
+                Title = type.Title
             };
         }
     }
