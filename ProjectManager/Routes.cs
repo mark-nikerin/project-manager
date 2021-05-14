@@ -61,7 +61,6 @@
             {
                 public const string GetTags = "api/projects/{projectId:int}/tasks/tags";
                 public const string AddTag = "api/projects/{projectId:int}/tasks/tags";
-                public const string GetTag = "api/projects/{projectId:int}/tasks/tags/{id:int}";
                 public const string DeleteTag = "api/projects/{projectId:int}/tasks/tags/{id:int}";
                 public const string UpdateTag = "api/projects/{projectId:int}/tasks/tags/{id:int}";
             }
@@ -76,11 +75,10 @@
 
             public static class Statuses
             {
-                public const string GetTags = "api/projects/{id:int}/tasks/statuses";
-                public const string AddTag = "api/projects/{id:int}/tasks/statuses";
-                public const string GetTag = "api/projects/{projectId:int}/tasks/statuses/{id:int}";
-                public const string DeleteTag = "api/projects/{projectId:int}/tasks/statuses/{id:int}";
-                public const string UpdateTag = "api/projects/{projectId:int}/tasks/statuses/{id:int}";
+                public const string GetStatuses = "api/projects/{id:int}/tasks/statuses";
+                public const string AddStatus = "api/projects/{id:int}/tasks/statuses";
+                public const string DeleteStatus = "api/projects/{projectId:int}/tasks/statuses/{id:int}";
+                public const string UpdateStatus = "api/projects/{projectId:int}/tasks/statuses/{id:int}";
             }
         }
 

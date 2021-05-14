@@ -98,17 +98,31 @@ namespace ProjectManager.Services.Extensions
             };
         }
 
-        public static TaskStatusDTO ToDTO(this TaskStatus type)
+        public static TaskStatusDTO ToDTO(this TaskStatus status)
         {
-            if (type == null)
+            if (status == null)
             {
                 return null;
             }
 
             return new TaskStatusDTO
             {
-                Id = type.Id,
-                Title = type.Title
+                Id = status.Id,
+                Title = status.Title
+            };
+        }
+
+        public static TaskTagDTO ToDTO(this TaskTag tag)
+        {
+            if (tag == null)
+            {
+                return null;
+            }
+
+            return new TaskTagDTO
+            {
+                Id = tag.Id,
+                Title = tag.Title
             };
         }
     }
