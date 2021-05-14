@@ -1,4 +1,4 @@
-﻿namespace ProjectManager.Models.Tasks.Requests.Tags
+﻿namespace ProjectManager.Models.Tasks.Tags.Requests
 {
     public class AddTaskTagRequest
     {

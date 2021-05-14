@@ -1,28 +1,28 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using ProjectManager.Models.Tasks.Requests.Tags;
+using ProjectManager.Models.Tasks.Tags.Requests;
 using ProjectManager.Services.Interfaces.DTO.Tasks;
 using ProjectManager.Services.Interfaces.Tasks;
 
-namespace ProjectManager.Controllers.Tasks
+namespace ProjectManager.Controllers.Projects.Tasks
 {
-    public class TagsController : ControllerBase
+    public class TaskTagsController : ControllerBase
     {
         private readonly ITaskTagsService _tagsService;
 
-        public TagsController(ITaskTagsService tagsService)
+        public TaskTagsController(ITaskTagsService tagsService)
         {
             _tagsService = tagsService;
         } 
 
-        [HttpGet(Routes.Tasks.Tags.GetTags)]
+        [HttpGet(Routes.Projects.TaskTags.GetTags)]
         public async Task<IActionResult> GetTypes(int projectId)
         {
             var result = await _tagsService.GetTags(projectId);
             return Ok(result);
         }
 
-        [HttpPost(Routes.Tasks.Tags.AddTag)]
+        [HttpPost(Routes.Projects.TaskTags.AddTag)]
         public async Task<IActionResult> AddType(int projectId, AddTaskTagRequest request)
         {
             var dto = new TaskTagDTO
@@ -34,7 +34,7 @@ namespace ProjectManager.Controllers.Tasks
             return Ok(result);
         }
 
-        [HttpPut(Routes.Tasks.Tags.UpdateTag)]
+        [HttpPut(Routes.Projects.TaskTags.UpdateTag)]
         public async Task<IActionResult> UpdateType(int projectId, int id, UpdateTaskTagRequest request)
         {
             var dto = new TaskTagDTO
@@ -46,7 +46,7 @@ namespace ProjectManager.Controllers.Tasks
             return Ok(result);
         }
 
-        [HttpDelete(Routes.Tasks.Tags.DeleteTag)]
+        [HttpDelete(Routes.Projects.TaskTags.DeleteTag)]
         public async Task<IActionResult> DeleteType(int projectId, int id)
         {
             await _tagsService.DeleteTag(projectId, id);

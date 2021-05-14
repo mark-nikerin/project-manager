@@ -1,4 +1,4 @@
-﻿namespace ProjectManager.Models.Tasks.Requests.Statuses
+﻿namespace ProjectManager.Models.Tasks.Statuses.Requests
 {
     public class AddTaskStatusRequest
     {

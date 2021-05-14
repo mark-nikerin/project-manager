@@ -1,28 +1,28 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using ProjectManager.Models.Tasks.Requests.Statuses;
+using ProjectManager.Models.Tasks.Statuses.Requests;
 using ProjectManager.Services.Interfaces.DTO.Tasks;
 using ProjectManager.Services.Interfaces.Tasks;
 
-namespace ProjectManager.Controllers.Tasks
+namespace ProjectManager.Controllers.Projects.Tasks
 {
-    public class StatusesController : ControllerBase
+    public class TaskStatusesController : ControllerBase
     {
         private readonly ITaskStatusesService _statusesService;
 
-        public StatusesController(ITaskStatusesService statusesService)
+        public TaskStatusesController(ITaskStatusesService statusesService)
         {
             _statusesService = statusesService;
         }
 
-        [HttpGet(Routes.Tasks.Statuses.GetStatuses)]
+        [HttpGet(Routes.Projects.TaskStatuses.GetStatuses)]
         public async Task<IActionResult> GetTypes(int projectId)
         {
             var result = await _statusesService.GetStatuses(projectId);
             return Ok(result);
         }
 
-        [HttpPost(Routes.Tasks.Statuses.AddStatus)]
+        [HttpPost(Routes.Projects.TaskStatuses.AddStatus)]
         public async Task<IActionResult> AddType(int projectId, AddTaskStatusRequest request)
         {
             var dto = new TaskStatusDTO
@@ -34,7 +34,7 @@ namespace ProjectManager.Controllers.Tasks
             return Ok(result);
         }
 
-        [HttpPut(Routes.Tasks.Statuses.UpdateStatus)]
+        [HttpPut(Routes.Projects.TaskStatuses.UpdateStatus)]
         public async Task<IActionResult> UpdateType(int projectId, int id, UpdateTaskStatusRequest request)
         {
             var dto = new TaskStatusDTO
@@ -46,7 +46,7 @@ namespace ProjectManager.Controllers.Tasks
             return Ok(result);
         }
 
-        [HttpDelete(Routes.Tasks.Statuses.DeleteStatus)]
+        [HttpDelete(Routes.Projects.TaskStatuses.DeleteStatus)]
         public async Task<IActionResult> DeleteType(int projectId, int id)
         {
             await _statusesService.DeleteStatus(projectId, id);

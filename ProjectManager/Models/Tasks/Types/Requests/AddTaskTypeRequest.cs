@@ -1,6 +1,6 @@
-﻿namespace ProjectManager.Models.Tasks.Requests.Types
+﻿namespace ProjectManager.Models.Tasks.Types.Requests
 {
-    public class UpdateTaskTypeRequest
+    public class AddTaskTypeRequest
     {
         public string Title { get; set; }
         public string Description { get; set; }

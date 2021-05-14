@@ -1,29 +1,29 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using ProjectManager.Models.Tasks.Requests.Types;
+using ProjectManager.Models.Tasks.Types.Requests;
 using ProjectManager.Services.Interfaces.DTO.Tasks;
 using ProjectManager.Services.Interfaces.Tasks;
 
-namespace ProjectManager.Controllers.Tasks
+namespace ProjectManager.Controllers.Projects.Tasks
 {
     [ApiController]
-    public class TypesController : ControllerBase
+    public class TaskTypesController : ControllerBase
     {
         private readonly ITaskTypesService _typesService;
 
-        public TypesController(ITaskTypesService typesService)
+        public TaskTypesController(ITaskTypesService typesService)
         {
             _typesService = typesService;
         }
 
-        [HttpGet(Routes.Tasks.Types.GetTypes)]
+        [HttpGet(Routes.Projects.TaskTypes.GetTypes)]
         public async Task<IActionResult> GetTypes(int projectId)
         {
             var result = await _typesService.GetTypes(projectId);
             return Ok(result);
         }
 
-        [HttpPost(Routes.Tasks.Types.AddType)]
+        [HttpPost(Routes.Projects.TaskTypes.AddType)]
         public async Task<IActionResult> AddType(int projectId, AddTaskTypeRequest request)
         {
             var dto = new TaskTypeDTO
@@ -36,7 +36,7 @@ namespace ProjectManager.Controllers.Tasks
             return Ok(result);
         }
 
-        [HttpPut(Routes.Tasks.Types.UpdateType)]
+        [HttpPut(Routes.Projects.TaskTypes.UpdateType)]
         public async Task<IActionResult> UpdateType(int projectId, int id, UpdateTaskTypeRequest request)
         {
             var dto = new TaskTypeDTO
@@ -49,7 +49,7 @@ namespace ProjectManager.Controllers.Tasks
             return Ok(result);
         }
 
-        [HttpDelete(Routes.Tasks.Types.DeleteType)]
+        [HttpDelete(Routes.Projects.TaskTypes.DeleteType)]
         public async Task<IActionResult> DeleteType(int projectId, int id)
         {
             await _typesService.DeleteType(projectId, id);

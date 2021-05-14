@@ -1,11 +1,10 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProjectManager.Models.Projects.Requests;
-using ProjectManager.Services.Interfaces;
 using ProjectManager.Services.Interfaces.DTO.Projects;
 using ProjectManager.Services.Interfaces.Projects;
 
-namespace ProjectManager.Controllers
+namespace ProjectManager.Controllers.Projects
 {
     [ApiController]
     public class ProjectsController : ControllerBase
