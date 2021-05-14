@@ -68,11 +68,10 @@
 
             public static class Types
             {
-                public const string GetTags = "api/projects/{id:int}/tasks/types";
-                public const string AddTag = "api/projects/{id:int}/tasks/types";
-                public const string GetTag = "api/projects/{projectId:int}/tasks/types/{id:int}";
-                public const string DeleteTag = "api/projects/{projectId:int}/tasks/types/{id:int}";
-                public const string UpdateTag = "api/projects/{projectId:int}/tasks/types/{id:int}";
+                public const string GetTypes = "api/projects/{projectId:int}/tasks/types";
+                public const string AddType = "api/projects/{projectId:int}/tasks/types";
+                public const string DeleteType = "api/projects/{projectId:int}/tasks/types/{id:int}";
+                public const string UpdateType = "api/projects/{projectId:int}/tasks/types/{id:int}";
             }
 
             public static class Statuses
