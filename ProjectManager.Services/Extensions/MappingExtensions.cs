@@ -3,6 +3,7 @@ using ProjectManager.Services.Interfaces.DTO.Comments;
 using ProjectManager.Services.Interfaces.DTO.Iterations;
 using ProjectManager.Services.Interfaces.DTO.Projects;
 using ProjectManager.Services.Interfaces.DTO.Tasks;
+using ProjectManager.Services.Interfaces.DTO.WorkTimeRecords;
 using ProjectManager.Storage.Models;
 
 namespace ProjectManager.Services.Extensions
@@ -160,6 +161,25 @@ namespace ProjectManager.Services.Extensions
                 UpdatedDate = comment.UpdatedDate,
                 AuthorId = comment.AuthorId,
                 TaskId = comment.TaskId
+            };
+        }
+
+        public static WorkTimeRecordDTO ToDTO(this WorkTimeRecord record)
+        {
+            if (record == null)
+            {
+                return null;
+            }
+
+            return new WorkTimeRecordDTO
+            {
+                Id = record.Id,
+                Date = record.Date,
+                Description = record.Description,
+                Hours = record.Hours,
+                ProjectId = record.ProjectId,
+                TaskId = record.TaskId,
+                UserId = record.UserId
             };
         }
     }

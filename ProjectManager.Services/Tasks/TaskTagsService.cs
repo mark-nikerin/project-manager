@@ -57,12 +57,12 @@ namespace ProjectManager.Services.Tasks
 
         public async Task<TaskTagDTO> UpdateTag(int projectId, int tagId, TaskTagDTO model)
         {
-            var type = await _context.TaskTags
+            var tag = await _context.TaskTags
                 .Where(x => x.ProjectId == projectId)
                 .Where(x => x.Id == tagId)
                 .FirstOrDefaultAsync();
 
-            if (type == null)
+            if (tag == null)
                 throw new NotFoundException(ErrorResponseCodes.InvalidOperation,
                     $"Tag with id={tagId} not found");
 
@@ -70,24 +70,27 @@ namespace ProjectManager.Services.Tasks
                 throw new BadRequestException(ErrorResponseCodes.InvalidOperation,
                     $"Tag with title '{model.Title}' already exists in this project");
 
-            type.Title = model.Title;
+            tag.Title = model.Title;
 
-            _context.TaskTags.Update(type);
+            _context.TaskTags.Update(tag);
             await _context.SaveChangesAsync();
 
-            var result = type.ToDTO();
+            var result = tag.ToDTO();
             return result;
         }
 
         public async Task DeleteTag(int projectId, int typeId)
         {
-            var type = await _context.TaskTags
+            var tag = await _context.TaskTags
                 .Where(x => x.ProjectId == projectId)
                 .Where(x => x.Id == typeId)
                 .FirstOrDefaultAsync();
 
-            _context.TaskTags.Remove(type);
-            await _context.SaveChangesAsync();
+            if (tag != null)
+            {
+                _context.TaskTags.Remove(tag);
+                await _context.SaveChangesAsync();
+            }
         }
 
         private async Task<bool> IsAlreadyExistsAsync(string title, int projectId, int? id = null)

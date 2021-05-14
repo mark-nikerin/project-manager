@@ -19,9 +19,11 @@ using ProjectManager.Services.Interfaces.Comments;
 using ProjectManager.Services.Interfaces.Iterations;
 using ProjectManager.Services.Interfaces.Projects;
 using ProjectManager.Services.Interfaces.Tasks;
+using ProjectManager.Services.Interfaces.WorkTimeRecords;
 using ProjectManager.Services.Iterations;
 using ProjectManager.Services.Projects;
 using ProjectManager.Services.Tasks;
+using ProjectManager.Services.WorkTimeRecords;
 using ProjectManager.Storage;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
@@ -54,6 +56,7 @@ namespace ProjectManager
             services.AddTransient<ITaskTypesService, TaskTypesService>();
             services.AddTransient<ICommentsService, CommentsService>();
             services.AddTransient<IIterationsService, IterationsService>();
+            services.AddTransient<IWorkTimeRecordsService, WorkTimeRecordsService>();
 
             services
                 .AddControllers(ConfigureMvcOptions)

@@ -66,7 +66,7 @@ namespace ProjectManager.Controllers.Projects
         }
 
         [HttpDelete(Routes.Projects.DeleteProject)]
-        public async Task<IActionResult> UpdateProject(int id)
+        public async Task<IActionResult> DeleteProject(int id)
         {
             await _projects.DeleteProject(id);
 
