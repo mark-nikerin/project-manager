@@ -16,8 +16,10 @@ using ProjectManager.Services.Comments;
 using ProjectManager.Services.Interfaces;
 using ProjectManager.Services.Interfaces.Boards;
 using ProjectManager.Services.Interfaces.Comments;
+using ProjectManager.Services.Interfaces.Iterations;
 using ProjectManager.Services.Interfaces.Projects;
 using ProjectManager.Services.Interfaces.Tasks;
+using ProjectManager.Services.Iterations;
 using ProjectManager.Services.Projects;
 using ProjectManager.Services.Tasks;
 using ProjectManager.Storage;
@@ -51,6 +53,7 @@ namespace ProjectManager
             services.AddTransient<ITaskStatusesService, TaskStatusesService>();
             services.AddTransient<ITaskTypesService, TaskTypesService>();
             services.AddTransient<ICommentsService, CommentsService>();
+            services.AddTransient<IIterationsService, IterationsService>();
 
             services
                 .AddControllers(ConfigureMvcOptions)

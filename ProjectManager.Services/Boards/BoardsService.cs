@@ -72,18 +72,18 @@ namespace ProjectManager.Services.Boards
             return addedBoard;
         }
 
-        public async Task<BoardDTO> UpdateBoard(int projectId, BoardDTO model)
+        public async Task<BoardDTO> UpdateBoard(int projectId, int boardId, BoardDTO model)
         {
             var board = await _context.Boards
                 .Where(x => x.ProjectId == projectId)
-                .Where(x => x.Id == model.Id)
+                .Where(x => x.Id == boardId)
                 .FirstOrDefaultAsync();
 
             if (board == null)
                 throw new NotFoundException(ErrorResponseCodes.InvalidOperation,
-                    $"Board with id={model.Id} not found");
+                    $"Board with id={boardId} not found");
 
-            if (await IsAlreadyExistsAsync(model.Title, projectId, model.Id))
+            if (await IsAlreadyExistsAsync(model.Title, projectId, boardId))
                 throw new BadRequestException(ErrorResponseCodes.InvalidOperation,
                     $"Board with title '{model.Title}' already exists in this project");
 
@@ -104,8 +104,11 @@ namespace ProjectManager.Services.Boards
                 .Where(x => x.Id == boardId)
                 .FirstOrDefaultAsync();
 
-            _context.Remove(board);
-            await _context.SaveChangesAsync();
+            if (board != null)
+            {
+                _context.Boards.Remove(board);
+                await _context.SaveChangesAsync();
+            }
         }
 
         private async Task<bool> IsAlreadyExistsAsync(string title, int projectId, int? id = null)

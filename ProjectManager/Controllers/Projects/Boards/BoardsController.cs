@@ -48,12 +48,11 @@ namespace ProjectManager.Controllers.Projects.Boards
         {
             var dto = new BoardDTO
             {
-                Id = id,
                 Title = request.Title,
                 Description = request.Description
             };
 
-            var result = await _boardsService.UpdateBoard(projectId, dto);
+            var result = await _boardsService.UpdateBoard(projectId, id, dto);
 
             return Ok(result);
         }

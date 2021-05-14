@@ -9,7 +9,7 @@ namespace ProjectManager.Services.Interfaces.Boards
         Task<IReadOnlyCollection<BoardDTO>> GetBoards(int projectId);
         Task<BoardDTO> GetBoard(int projectId, int boardId);
         Task<BoardDTO> AddBoard(int projectId, BoardDTO model);
-        Task<BoardDTO> UpdateBoard(int projectId, BoardDTO model);
+        Task<BoardDTO> UpdateBoard(int projectId, int boardId, BoardDTO model);
         Task DeleteBoard(int projectId, int boardId);
     }
 }

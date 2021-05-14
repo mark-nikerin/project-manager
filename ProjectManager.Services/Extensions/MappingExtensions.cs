@@ -1,5 +1,6 @@
 ﻿using ProjectManager.Services.Interfaces.DTO.Boards;
 using ProjectManager.Services.Interfaces.DTO.Comments;
+using ProjectManager.Services.Interfaces.DTO.Iterations;
 using ProjectManager.Services.Interfaces.DTO.Projects;
 using ProjectManager.Services.Interfaces.DTO.Tasks;
 using ProjectManager.Storage.Models;
@@ -39,6 +40,23 @@ namespace ProjectManager.Services.Extensions
                 Id = board.Id,
                 Title = board.Title,
                 Description = board.Description
+            };
+        }
+
+        public static IterationDTO ToDTO(this Iteration iteration)
+        {
+            if (iteration == null)
+            {
+                return null;
+            }
+
+            return new IterationDTO
+            {
+                Id = iteration.Id,
+                Title = iteration.Title,
+                Description = iteration.Description,
+                StartDate = iteration.StartDate,
+                EndDate = iteration.EndDate
             };
         }
 
