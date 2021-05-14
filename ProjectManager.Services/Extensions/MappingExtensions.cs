@@ -1,4 +1,5 @@
 ﻿using ProjectManager.Services.Interfaces.DTO.Boards;
+using ProjectManager.Services.Interfaces.DTO.Comments;
 using ProjectManager.Services.Interfaces.DTO.Projects;
 using ProjectManager.Services.Interfaces.DTO.Tasks;
 using ProjectManager.Storage.Models;
@@ -123,6 +124,24 @@ namespace ProjectManager.Services.Extensions
             {
                 Id = tag.Id,
                 Title = tag.Title
+            };
+        }
+
+        public static CommentDTO ToDTO(this Comment comment)
+        {
+            if (comment == null)
+            {
+                return null;
+            }
+
+            return new CommentDTO
+            {
+                Id = comment.Id,
+                Text = comment.Text,
+                CreatedDate = comment.CreatedDate,
+                UpdatedDate = comment.UpdatedDate,
+                AuthorId = comment.AuthorId,
+                TaskId = comment.TaskId
             };
         }
     }

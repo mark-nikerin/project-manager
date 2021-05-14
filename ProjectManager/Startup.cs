@@ -12,8 +12,10 @@ using Microsoft.OpenApi.Models;
 using ProjectManager.Filters;
 using ProjectManager.Services;
 using ProjectManager.Services.Boards;
+using ProjectManager.Services.Comments;
 using ProjectManager.Services.Interfaces;
 using ProjectManager.Services.Interfaces.Boards;
+using ProjectManager.Services.Interfaces.Comments;
 using ProjectManager.Services.Interfaces.Projects;
 using ProjectManager.Services.Interfaces.Tasks;
 using ProjectManager.Services.Projects;
@@ -48,6 +50,7 @@ namespace ProjectManager
             services.AddTransient<ITaskTagsService, TaskTagsService>();
             services.AddTransient<ITaskStatusesService, TaskStatusesService>();
             services.AddTransient<ITaskTypesService, TaskTypesService>();
+            services.AddTransient<ICommentsService, CommentsService>();
 
             services
                 .AddControllers(ConfigureMvcOptions)
