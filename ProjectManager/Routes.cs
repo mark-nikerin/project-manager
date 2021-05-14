@@ -75,8 +75,8 @@
 
             public static class Statuses
             {
-                public const string GetStatuses = "api/projects/{id:int}/tasks/statuses";
-                public const string AddStatus = "api/projects/{id:int}/tasks/statuses";
+                public const string GetStatuses = "api/projects/{projectId:int}/tasks/statuses";
+                public const string AddStatus = "api/projects/{projectId:int}/tasks/statuses";
                 public const string DeleteStatus = "api/projects/{projectId:int}/tasks/statuses/{id:int}";
                 public const string UpdateStatus = "api/projects/{projectId:int}/tasks/statuses/{id:int}";
             }
